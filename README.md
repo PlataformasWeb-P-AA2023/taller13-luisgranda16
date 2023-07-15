@@ -3,7 +3,7 @@
 ## Creación de Servicio Web y Consumo vía Flask
 
 ### Integrantes
-- Francisco Gonzalez
+- Francisco González
 - Luis Granda
 
 ### Revisar
