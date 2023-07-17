@@ -7,7 +7,12 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return """
+        <p>Hello, World!</p>
+        <a href='http://127.0.0.1:8000/api/losedificios/'>Edificios</a>
+        <a href='http://127.0.0.1:8000/api/lospropietarios/'>Propietarios</a>
+        <a href='http://127.0.0.1:8000/api/losdepartamentos/'>Departamentos</a>
+    """
 
 
 @app.route("/losedificios")
