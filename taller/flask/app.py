@@ -33,3 +33,15 @@ def los_departamentos():
     return render_template("losdepartamentos.html", datos=datos,
     numero=numero)
 
+#Se crea la vista de propietarios
+
+@app.route("/lospropietarios")
+def los_propietarios():
+    """
+    """
+    r = requests.get("http://127.0.0.1:8000/api/propietarios/",
+            auth=(usuario, clave))
+    datos = json.loads(r.content)['results']
+    numero = json.loads(r.content)['count']
+    return render_template("lospropietarios.html", datos=datos,
+    numero=numero)
