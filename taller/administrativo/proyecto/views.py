@@ -12,7 +12,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from proyecto.serializers import UserSerializer, GroupSerializer, \
-EdificioSerializer, DepartamentoSerializer
+EdificioSerializer, DepartamentoSerializer, PropietarioSerializer
 
 # importar las clases de models.py
 from proyecto.models import *
@@ -175,6 +175,17 @@ class EdificioViewSet(viewsets.ModelViewSet):
     queryset = Edificio.objects.all()
     serializer_class = EdificioSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class PropietarioViewSet(viewsets.ModelViewSet):
+# class NumeroTelefonicoViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Propietario.objects.all()
+    serializer_class = PropietarioSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
 
 class DepartamentoViewSet(viewsets.ModelViewSet):
 # class NumeroTelefonicoViewSet(viewsets.ReadOnlyModelViewSet):

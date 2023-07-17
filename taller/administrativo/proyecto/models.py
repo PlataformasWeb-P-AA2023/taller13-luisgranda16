@@ -19,24 +19,43 @@ class Edificio(models.Model):
                 self.tipo)
     
     def get_nro_cuartos_total(self):
-        cantidadTotal = [d.nro_cuartos for d in self.departamentos.all()]
+        cantidadTotal = [d.nro_cuartos for d in self.departamentosE.all()]
         cantidadTotal = sum(cantidadTotal)
         return cantidadTotal
     
     def get_costo_total(self):
-        costoTotal = [d.costo for d in self.departamentos.all()]
+        costoTotal = [d.costo for d in self.departamentosE.all()]
         costoTotal = sum(costoTotal)
         return costoTotal
+
+
+class Propietario(models.Model):
+    cedula = models.CharField(max_length=30)
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+
+    def get_total_departamentos(self):
+        cantidadTotal = [d for d in self.departamentosP.all()]
+        return len(cantidadTotal)
+    
+    def get_edificios(self):
+        lista = [d.edificio.nombre for d in self.departamentosP.all()]
+        return lista
+    
+    def __str__(self):
+        return "Propietario: %s - %s %s" % (self.cedula, 
+                self.nombre, 
+                self.apellido)
     
 
 class Departamento(models.Model):
-    propietario = models.CharField(max_length=100)
     costo = models.DecimalField(max_digits= 8, decimal_places= 2)
     nro_cuartos =  models.IntegerField("Número de cuartos")
     edificio = models.ForeignKey(Edificio, on_delete=models.CASCADE,
-            related_name="departamentos")
+            related_name="departamentosE")
+    propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE,
+            related_name="departamentosP")
 
     def __str__(self):
-        return "Departamento: Propietario = %s - %f - Num. Cuartos = %d" % (self.propietario, 
-                self.costo, 
+        return "Departamento: %f - Num. Cuartos = %d" % (self.costo, 
                 self.nro_cuartos)
