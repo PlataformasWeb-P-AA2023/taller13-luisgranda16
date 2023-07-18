@@ -17,9 +17,18 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EdificioSerializer(serializers.HyperlinkedModelSerializer):
+    cuartos = serializers.SerializerMethodField()
+    costo = serializers.SerializerMethodField()
+
     class Meta:
         model = Edificio
         fields = '__all__'
+
+    def get_cuartos(self, obj):
+        return obj.get_nro_cuartos_total()
+    
+    def get_costo(self, obj):
+        return obj.get_costo_total()
 
 
 class PropietarioSerializer(serializers.HyperlinkedModelSerializer):

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Demo</title>
+    <title>Edificios</title>
   </head>
   <body>
     <h5>Listado de edificios - {{numero_edificios}}</h5>
@@ -15,6 +15,8 @@
       <li><b>Direccion: </b>{{e['direccion']}}</li>
       <li><b>Ciudad: </b>{{e['ciudad']}}</li>
       <li><b>Tipo: </b>{{e['tipo']}}</li>
+      <li><b>Total de cuartos: </b>{{e['cuartos']}}</li>
+      <li><b>Costo total: </b>{{e['costo']}}</li>
     </ol>
     <hr>
     {% endfor%}
