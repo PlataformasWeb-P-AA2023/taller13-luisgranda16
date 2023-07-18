@@ -6,20 +6,20 @@
     <title>Demo</title>
   </head>
   <body>
-    <h5>Listado de propietarios - {{numero_propietarios}}</h5>
+    <h5>Listado de propietarios - {{nro_propietarios}}</h5>
 
-    {% for e in propietarios %}
+    {% for p in propietarios %}
 
     <ol>
-      <li><b>Cedula: </b>{{e['cedula']}}</li>
-      <li><b>Nombre: </b>{{e['nombre']}}</li>
-      <li><b>Apellido: </b>{{e['apellido']}}</li>
-      <li><b>Numero de departamentos: </b>{{e['departamentos']}}</li>
+      <li><b>Cedula: </b>{{p['cedula']}}</li>
+      <li><b>Nombre: </b>{{p['nombre']}}</li>
+      <li><b>Apellido: </b>{{p['apellido']}}</li>
+      <li><b>Numero de departamentos: </b>{{p['departamentos']}}</li>
       <li>
         <b>Edificio: </b>
         <ul>
-            {% for e in edificios %}
-            <li>e</li>
+            {% for e in p['edificios'] %}
+              <li>{{e}}</li>
             {% endfor%}
         </ul>
     </li>

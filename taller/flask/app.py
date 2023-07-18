@@ -9,9 +9,9 @@ app = Flask(__name__, template_folder='templates')
 def hello_world():
     return """
         <p>Hello, World!</p>
-        <a href='http://127.0.0.1:8000/api/losedificios/'>Edificios</a>
-        <a href='http://127.0.0.1:8000/api/lospropietarios/'>Propietarios</a>
-        <a href='http://127.0.0.1:8000/api/losdepartamentos/'>Departamentos</a>
+        <a href='http://127.0.0.1:5000/losedificios'>Edificios</a> <br>
+        <a href='http://127.0.0.1:5000/lospropietarios'>Propietarios</a> <br>
+        <a href='http://127.0.0.1:5000/losdepartamentos'>Departamentos</a> <br>
     """
 
 
@@ -48,5 +48,5 @@ def los_propietarios():
             auth=(usuario, clave))
     datos = json.loads(r.content)['results']
     numero = json.loads(r.content)['count']
-    return render_template("lospropietarios.html", datos=datos,
-    numero=numero)
+    return render_template("lospropietarios.html", propietarios=datos,
+    nro_propietarios=numero)
